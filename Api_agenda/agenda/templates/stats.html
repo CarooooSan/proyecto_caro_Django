@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{% static 'css/spur.css' %}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
     <script src="{% static 'js/chart-js-config.js' %}"></script>
-    <title>ExpressHome</title>
+    <title>Agenda Digital </title>
 </head>
 
 <body>
@@ -21,36 +21,33 @@
                     <i class="fas fa-bars"></i>
                 </a>
                 <a href="{% url 'index' %}" class="spur-logo">
-                    <i class="fas fa-bolt"></i> <span>Express home</span>
+                    <i class="fas fa-bolt"></i> <span>Agenda Digital</span>
                 </a>
             </header>
             <nav class="dash-nav-list">
                 <a href="{% url 'index' %}" class="dash-nav-item">
-                    <i class="fas fa-home"></i> Dashboard
+                    <i class="fas fa-home"></i> Inicio
                 </a>
                 
                 <div class="dash-nav-dropdown">
                     <a href="#!" class="dash-nav-item dash-nav-dropdown-toggle">
-                        <i class="fas fa-chart-bar"></i> Charts </a>
+                        <i class="fas fa-chart-bar"></i> Actividades</a>
                     <div class="dash-nav-dropdown-menu">
                         <a href="chartjs.html" class="dash-nav-dropdown-item">Chart.js</a>
                     </div>
                 </div>
                 <div class="dash-nav-dropdown  show">
                     <a href="#!" class="dash-nav-item dash-nav-dropdown-toggle">
-                        <i class="fas fa-cube"></i> Components </a>
+                        <i class="fas fa-cube"></i> Servicios </a>
                     <div class="dash-nav-dropdown-menu">
-                        <a href="cards.html" class="dash-nav-dropdown-item">Cards</a>
-                        <a href="forms.html" class="dash-nav-dropdown-item">Forms</a>
+                        <a href="cards.html" class="dash-nav-dropdown-item">Agenda</a>
+                        <a href="forms.html" class="dash-nav-dropdown-item">Informacion</a>
                         <div class="dash-nav-dropdown ">
-                            <a href="#" class="dash-nav-dropdown-item dash-nav-dropdown-toggle">Icons</a>
+                           
                             <div class="dash-nav-dropdown-menu">
-                                <a href="icons.html" class="dash-nav-dropdown-item">Solid Icons</a>
-                                <a href="icons.html#regular-icons" class="dash-nav-dropdown-item">Regular Icons</a>
-                                <a href="icons.html#brand-icons" class="dash-nav-dropdown-item">Brand Icons</a>
-                            </div>
+                                
                         </div>
-                        <a href="stats.html" class="dash-nav-dropdown-item">Stats</a>
+                        <a href="stats.html" class="dash-nav-dropdown-item">Pagos</a>
                         <a href="{% url 'tables' %}" class="dash-nav-dropdown-item">Tables</a>
                         <a href="typography.html" class="dash-nav-dropdown-item">Typography</a>
                         <a href="userinterface.html" class="dash-nav-dropdown-item">User Interface</a>
@@ -58,7 +55,7 @@
                 </div>
                 <div class="dash-nav-dropdown">
                     <a href="#!" class="dash-nav-item dash-nav-dropdown-toggle">
-                        <i class="fas fa-file"></i> Layouts </a>
+                        <i class="fas fa-file"></i> Acerca de  </a>
                     <div class="dash-nav-dropdown-menu">
                         <a href="blank.html" class="dash-nav-dropdown-item">Blank</a>
                         <a href="content.html" class="dash-nav-dropdown-item">Content</a>
@@ -110,148 +107,60 @@
             </header>
             <main class="dash-content">
                 <div class="container-fluid">
-                    <h1 class="dash-title">Stats</h1>
+                    <h1 class="dash-title">Pago de Servicios</h1>
                     <div class="row">
                         <div class="col-lg-4">
-                            <div class="stats stats-primary">
-                                <h3 class="stats-title"> Primary </h3>
-                                <div class="stats-content">
-                                    <div class="stats-icon">
-                                        <i class="fas fa-cart-arrow-down"></i>
-                                    </div>
-                                    <div class="stats-data">
-                                        <div class="stats-number">$100</div>
-                                        <div class="stats-change">
-                                            <span class="stats-percentage">+17.5%</span>
-                                            <span class="stats-timeframe">from last month</span>
-                                        </div>
-                                    </div>
+                           
+                            <main class="dash-content">
+                                <div class="container-fluid">
+                                    <!-- Otras partes del contenido -->
+                            
+                                    <h1 class="dash-title">Agregar Datos</h1>
+                                    <form action="{% url 'procesar_pago' %}" method="post">
+                                        <!-- Información del Cliente -->
+                                        <label for="nombre">Nombre:</label>
+                                        <input type="text" id="nombre" name="nombre" required>
+                            
+                                        <label for="email">Correo Electrónico:</label>
+                                        <input type="email" id="email" name="email" required>
+                            
+                                        <!-- Servicios a Pagar -->
+                                        <h2>Servicios a Pagar</h2>
+                            
+                                        <label>
+                                            <input type="checkbox" name="servicios[]" value="netflix"> Netflix
+                                        </label>
+                            
+                                        <label>
+                                            <input type="checkbox" name="servicios[]" value="telmex"> Telmex
+                                        </label>
+                            
+                                        <label>
+                                            <input type="checkbox" name="servicios[]" value="totalplay"> Totalplay
+                                        </label>
+                            
+                                        <!-- Detalles del Pago -->
+                                        <h2>Detalles del Pago</h2>
+                            
+                                        <label for="monto">Monto a Pagar:</label>
+                                        <input type="number" id="monto" name="monto" required>
+                            
+                                        <label for="tarjeta">Número de Tarjeta:</label>
+                                        <input type="text" id="tarjeta" name="tarjeta" maxlength="16" required>
+                            
+                                        <label for="fecha_expiracion">Fecha de Expiración:</label>
+                                        <input type="text" id="fecha_expiracion" name="fecha_expiracion" placeholder="MM/AA" required>
+                            
+                                        <label for="ccv">CCV:</label>
+                                        <input type="text" id="ccv" name="ccv" maxlength="3" required>
+                            
+                                        <!-- Botón de Pago -->
+                                        <button type="submit">Realizar Pago</button>
+
+                                    </form>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="stats stats-secondary">
-                                <h3 class="stats-title"> Secondary </h3>
-                                <div class="stats-content">
-                                    <div class="stats-icon">
-                                        <i class="fas fa-cart-arrow-down"></i>
-                                    </div>
-                                    <div class="stats-data">
-                                        <div class="stats-number">$100</div>
-                                        <div class="stats-change">
-                                            <span class="stats-percentage">+17.5%</span>
-                                            <span class="stats-timeframe">from last month</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="stats stats-success">
-                                <h3 class="stats-title"> Success </h3>
-                                <div class="stats-content">
-                                    <div class="stats-icon">
-                                        <i class="fas fa-cart-arrow-down"></i>
-                                    </div>
-                                    <div class="stats-data">
-                                        <div class="stats-number">$100</div>
-                                        <div class="stats-change">
-                                            <span class="stats-percentage">+17.5%</span>
-                                            <span class="stats-timeframe">from last month</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="stats stats-info">
-                                <h3 class="stats-title"> Info </h3>
-                                <div class="stats-content">
-                                    <div class="stats-icon">
-                                        <i class="fas fa-cart-arrow-down"></i>
-                                    </div>
-                                    <div class="stats-data">
-                                        <div class="stats-number">$100</div>
-                                        <div class="stats-change">
-                                            <span class="stats-percentage">+17.5%</span>
-                                            <span class="stats-timeframe">from last month</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="stats stats-warning">
-                                <h3 class="stats-title"> Warning </h3>
-                                <div class="stats-content">
-                                    <div class="stats-icon">
-                                        <i class="fas fa-cart-arrow-down"></i>
-                                    </div>
-                                    <div class="stats-data">
-                                        <div class="stats-number">$100</div>
-                                        <div class="stats-change">
-                                            <span class="stats-percentage">+17.5%</span>
-                                            <span class="stats-timeframe">from last month</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="stats stats-danger">
-                                <h3 class="stats-title"> Danger </h3>
-                                <div class="stats-content">
-                                    <div class="stats-icon">
-                                        <i class="fas fa-cart-arrow-down"></i>
-                                    </div>
-                                    <div class="stats-data">
-                                        <div class="stats-number">$100</div>
-                                        <div class="stats-change">
-                                            <span class="stats-percentage">+17.5%</span>
-                                            <span class="stats-timeframe">from last month</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="stats stats-light">
-                                <h3 class="stats-title"> Light </h3>
-                                <div class="stats-content">
-                                    <div class="stats-icon">
-                                        <i class="fas fa-cart-arrow-down"></i>
-                                    </div>
-                                    <div class="stats-data">
-                                        <div class="stats-number">$100</div>
-                                        <div class="stats-change">
-                                            <span class="stats-percentage">+17.5%</span>
-                                            <span class="stats-timeframe">from last month</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="stats stats-dark">
-                                <h3 class="stats-title"> Dark </h3>
-                                <div class="stats-content">
-                                    <div class="stats-icon">
-                                        <i class="fas fa-cart-arrow-down"></i>
-                                    </div>
-                                    <div class="stats-data">
-                                        <div class="stats-number">$100</div>
-                                        <div class="stats-change">
-                                            <span class="stats-percentage">+17.5%</span>
-                                            <span class="stats-timeframe">from last month</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </main>
-        </div>
+                            </main>
+                            
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

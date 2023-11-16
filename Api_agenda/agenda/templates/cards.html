@@ -106,6 +106,30 @@
             <main class="dash-content">
                 <div class="container-fluid">
                     <h1 class="dash-title">Cards</h1>
+                    <!-- lista_actividades.html -->
+<h1>Actividades</h1>
+<ul>
+    {% for actividad in actividades %}
+        <li>{{ actividad.nombre }} - {{ actividad.descripcion }} <a href="{% url 'editar_actividad' actividad.pk %}">Editar</a> <a href="{% url 'eliminar_actividad' actividad.pk %}">Eliminar</a></li>
+    {% endfor %}
+</ul>
+<a href="{% url 'nueva_actividad' %}">Nueva Actividad</a>
+<!-- nueva_actividad.html -->
+<h1>Nueva Actividad</h1>
+<form method="post" action="">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar</button>
+</form>
+<!-- editar_actividad.html -->
+<h1>Editar Actividad</h1>
+<form method="post" action="">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar Cambios</button>
+</form>
+
+
                     <p class="mb-5">Cards are simply Bootstrap cards with some added features for the dashboard environment.</p>
                     <div class="row">
                         <div class="col-lg-6">

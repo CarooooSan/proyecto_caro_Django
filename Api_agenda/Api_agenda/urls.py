@@ -1,22 +1,43 @@
+
+
+
+"""Tienda URL Configuration
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/3.2/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
 from django.contrib import admin
 from django.urls import path
+from agenda.views import Home, stats, tables, forgot
+
+
 from agenda import views
+from agenda.views import procesar_pago_view 
 
 
 
 urlpatterns = [
- path('', views.Home.as_view(), name='index'),
-    path('blank/', views.BlankView.as_view(), name='blank'),
-    path('cards/', views.CardsView.as_view(), name='cards'),
-    path('correos/content/', views.ContentView.as_view(), name='content'),
-    path('correos/correo/', views.CorreoView.as_view(), name='correo'),
-    path('correos/correo_recuperacion/', views.CorreoRecuperacionView.as_view(), name='correo_recuperacion'),
-    path('forms/', views.FormsView.as_view(), name='forms'),
-    path('login/', views.LoginView.as_view(), name='login'),
-    path('signup/', views.SignupView.as_view(), name='signup'),
-    path('stats/', views.StatsView.as_view(), name='stats'),
-    path('tables/', views.TablesView.as_view(), name='tables'),
-    path('userinterface/', views.UserInterfaceView.as_view(), name='userinterface'),
-    path('logout/', views.signout, name='logout'),
-    path('enviar_correo/<str:correo>/<str:usuario>/<str:contra>/', views.enviar_correo, name='enviar_correo'),
+    # path('admin/', admin.site.urls),
+  
+    path('',Home.as_view(),name='index'),
+    path('signup/',views.signup,name='signup'),
+    path('signin/',views.signin,name='signin'),
+    path('stats/',stats.as_view(),name='stats'),
+    path('tables/',tables.as_view(),name='tables'),
+    path('forgot/',views.forgotPwd,name='forgot'),
+    path('logout/',views.signout,name='logout'),
+    path('enviar_correo/<str:correo>/<str:contra>/', views.enviar_correo, name='enviar_correo'),
+    path('procesar_pago/', procesar_pago_view, name='procesar_pago'),
+   
+    
 ]

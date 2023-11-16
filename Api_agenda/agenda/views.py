@@ -9,7 +9,7 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.db import IntegrityError
 from django.template.loader import render_to_string
-from agenda.views import About
+
 
 import secrets
 import string
@@ -20,6 +20,11 @@ import string
 #    template_name='index.html'
 #    def get(self,request):
 #        return render(request,self.template_name)
+
+def procesar_pago_view(request):
+    # Lógica para procesar el pago
+    return render(request, 'stats.html')  # O la plantilla que desees mostrar después del pago
+
 
 def signin(request):
     if request.method == 'GET':
@@ -124,5 +129,6 @@ def forgotPwd(request):
         except IntegrityError:
             return render(request, 'correo_recuperacion.html',{
                 'form' : UserCreationForm,
-                "mensaje" : 'Este usuario ya existe, por favor ingresa otro'
-            })
+                "mensaje" : 'Este usuario ya existe, por favor ingresa otro'})
+                
+      #***
