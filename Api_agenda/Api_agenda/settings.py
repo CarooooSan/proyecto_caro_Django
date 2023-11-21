@@ -140,4 +140,4 @@ EMAIL_HOST_PASSWORD = 'zkvq npsb otjx nprs'
 
 #Configuracion opcional del correo
 DEFAULT_FROM_EMAIL = 'carolsancay21605@gmail.com'
-EMAIL_SUBJECT_PREFIX = '[TaskMaster Pro: Asignación de contraseña]'
+#EMAIL_SUBJECT_PREFIX = '[TaskMaster Pro: Asignación de contraseña]'
